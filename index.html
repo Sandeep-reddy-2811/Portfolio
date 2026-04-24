@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sandeep Kumar Reddy – Developer & CS Student</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #090c10;
+      --bg2: #0d1117;
+      --bg3: #111820;
+      --border: rgba(255,255,255,0.07);
+      --text: #e8edf3;
+      --muted: #7a8899;
+      --accent: #4af0b4;
+      --accent2: #1ef0f0;
+      --red: #ff4d6a;
+      --card-bg: #0f1923;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 6vw;
+      background: rgba(9,12,16,0.85);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: 1.1rem;
+      color: var(--accent);
+      letter-spacing: -0.02em;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted); font-size: 0.88rem; text-decoration: none;
+      letter-spacing: 0.04em; text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-cta {
+      background: transparent; border: 1px solid var(--accent);
+      color: var(--accent); padding: 0.45rem 1.2rem;
+      border-radius: 2rem; font-size: 0.82rem; cursor: pointer;
+      font-family: 'DM Sans', sans-serif; font-weight: 500;
+      transition: background 0.2s, color 0.2s;
+      text-decoration: none;
+    }
+    .nav-cta:hover { background: var(--accent); color: #090c10; }
+
+    /* ── HERO ── */
+    #home {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 8rem 6vw 4rem;
+      position: relative; overflow: hidden;
+    }
+    .hero-glow {
+      position: absolute; top: -100px; right: -100px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(74,240,180,0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-glow-2 {
+      position: absolute; bottom: -150px; left: 10%;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(30,240,240,0.05) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 4rem; align-items: center; width: 100%; max-width: 1200px;
+    }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(74,240,180,0.1); border: 1px solid rgba(74,240,180,0.25);
+      color: var(--accent); font-size: 0.75rem; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 0.35rem 0.9rem; border-radius: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    .hero-tag::before {
+      content: ''; display: inline-block;
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent);
+      animation: blink 1.4s infinite;
+    }
+    @keyframes blink { 0%,100% { opacity:1 } 50% { opacity:0.2 } }
+
+    .hero-heading {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.8rem, 6vw, 5.5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+    }
+    .hero-heading .line2 { color: var(--accent); }
+    .hero-heading .line3 {
+      -webkit-text-stroke: 1px rgba(255,255,255,0.25);
+      color: transparent;
+    }
+    .hero-sub {
+      color: var(--muted); font-size: 1rem; line-height: 1.7;
+      max-width: 480px; margin-bottom: 2.5rem;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--accent); color: #090c10;
+      padding: 0.75rem 2rem; border-radius: 2rem;
+      font-family: 'DM Sans', sans-serif; font-weight: 600;
+      font-size: 0.9rem; text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+    .btn-primary:hover { opacity: 0.85; transform: translateY(-2px); }
+    .btn-ghost {
+      background: transparent; border: 1px solid var(--border);
+      color: var(--text); padding: 0.75rem 2rem; border-radius: 2rem;
+      font-family: 'DM Sans', sans-serif; font-weight: 500;
+      font-size: 0.9rem; text-decoration: none;
+      transition: border-color 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+    .btn-ghost:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+    /* avatar blob */
+    .hero-avatar {
+      position: relative; flex-shrink: 0;
+    }
+    .avatar-blob {
+      width: 280px; height: 340px;
+      border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%;
+      background: linear-gradient(135deg, #0d2a20 0%, #0d1f2d 50%, #0a0d15 100%);
+      border: 1px solid rgba(74,240,180,0.2);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .avatar-blob::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 50%, rgba(9,12,16,0.5));
+    }
+    .avatar-initials {
+      font-family: 'Syne', sans-serif;
+      font-size: 5rem; font-weight: 800;
+      color: rgba(74,240,180,0.18);
+      z-index: 1;
+    }
+    .avatar-ring {
+      position: absolute; inset: -12px;
+      border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%;
+      border: 1px dashed rgba(74,240,180,0.15);
+      animation: spin 20s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg) } }
+
+    .hero-stats {
+      display: flex; gap: 2rem; margin-top: 3rem;
+      padding-top: 2rem; border-top: 1px solid var(--border);
+    }
+    .stat-item { }
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.8rem; font-weight: 800; color: var(--accent);
+    }
+    .stat-label { font-size: 0.78rem; color: var(--muted); margin-top: 0.2rem; }
+
+    /* ── SECTION BASE ── */
+    section { padding: 6rem 6vw; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-tag {
+      font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.15em;
+      color: var(--accent); margin-bottom: 0.8rem; display: flex;
+      align-items: center; gap: 0.6rem;
+    }
+    .section-tag::before {
+      content: ''; display: block;
+      width: 24px; height: 1px; background: var(--accent);
+    }
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 800; letter-spacing: -0.03em;
+      margin-bottom: 3rem; line-height: 1.1;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--bg2); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: start;
+    }
+    .about-text p {
+      color: var(--muted); line-height: 1.8; font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+    .about-text p span { color: var(--text); }
+    .edu-list { margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+    .edu-card {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.2rem 1.5rem;
+      position: relative; overflow: hidden;
+    }
+    .edu-card::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+      width: 3px; background: var(--accent);
+      border-radius: 3px 0 0 3px;
+    }
+    .edu-degree {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem;
+    }
+    .edu-school { font-size: 0.82rem; color: var(--muted); }
+    .edu-year {
+      font-size: 0.75rem; color: var(--accent);
+      margin-top: 0.5rem; font-weight: 500;
+    }
+
+    /* ── SKILLS ── */
+    #skills { background: var(--bg); }
+    .skills-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 1rem;
+    }
+    .skill-chip {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px; padding: 1rem;
+      text-align: center; transition: border-color 0.2s, transform 0.2s;
+    }
+    .skill-chip:hover {
+      border-color: rgba(74,240,180,0.4); transform: translateY(-3px);
+    }
+    .skill-icon { font-size: 1.6rem; margin-bottom: 0.5rem; }
+    .skill-name { font-size: 0.82rem; color: var(--muted); }
+
+    /* ── PROJECTS ── */
+    #projects { background: var(--bg2); }
+    .projects-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .project-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px; padding: 2rem;
+      position: relative; overflow: hidden;
+      transition: border-color 0.25s, transform 0.25s;
+      cursor: pointer;
+    }
+    .project-card:hover {
+      border-color: rgba(74,240,180,0.3);
+      transform: translateY(-4px);
+    }
+    .project-card.featured {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, #0d2a1e 0%, #0f1923 100%);
+    }
+    .project-card-glow {
+      position: absolute; top: -60px; right: -60px;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(74,240,180,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .project-tag {
+      display: inline-block;
+      background: rgba(74,240,180,0.1); border: 1px solid rgba(74,240,180,0.2);
+      color: var(--accent); font-size: 0.7rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0.25rem 0.7rem; border-radius: 2rem; margin-bottom: 1rem;
+    }
+    .project-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.2rem; font-weight: 700; margin-bottom: 0.8rem;
+    }
+    .project-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+    .project-link {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      margin-top: 1.5rem; color: var(--accent); text-decoration: none;
+      font-size: 0.82rem; font-weight: 500; letter-spacing: 0.04em;
+      text-transform: uppercase; transition: gap 0.2s;
+    }
+    .project-link:hover { gap: 0.7rem; }
+    .project-link::after { content: '→'; }
+
+    /* coming soon card */
+    .project-card.soon {
+      border-style: dashed;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; min-height: 200px;
+    }
+    .soon-icon { font-size: 2rem; margin-bottom: 0.8rem; opacity: 0.4; }
+    .soon-text { color: var(--muted); font-size: 0.85rem; }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--bg); }
+    .contact-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: center;
+    }
+    .contact-heading {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 800; line-height: 1.1;
+      letter-spacing: -0.03em; margin-bottom: 1rem;
+    }
+    .contact-heading span { color: var(--accent); }
+    .contact-sub { color: var(--muted); font-size: 0.95rem; line-height: 1.7; }
+    .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-row {
+      display: flex; align-items: center; gap: 1rem;
+      background: var(--card-bg); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1rem 1.4rem;
+      text-decoration: none; color: var(--text);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .contact-row:hover { border-color: rgba(74,240,180,0.3); transform: translateX(4px); }
+    .contact-row-icon { font-size: 1.3rem; flex-shrink: 0; }
+    .contact-row-label { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+    .contact-row-value { font-size: 0.9rem; margin-top: 0.1rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 6vw;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-logo {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      color: var(--accent); font-size: 1rem;
+    }
+    .footer-text { color: var(--muted); font-size: 0.8rem; }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: rgba(74,240,180,0.3); border-radius: 4px; }
+
+    /* ── ANIMATIONS ── */
+    .fade-up {
+      opacity: 0; transform: translateY(30px);
+      animation: fadeUp 0.7s ease forwards;
+    }
+    @keyframes fadeUp { to { opacity:1; transform:translateY(0) } }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.35s; }
+    .delay-4 { animation-delay: 0.5s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-avatar { display: none; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .contact-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-card.featured { grid-column: unset; }
+      nav { padding: 1rem 4vw; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">SKR.</div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+    </ul>
+    <a class="nav-cta" href="#contact">Let's Connect</a>
+  </nav>
+
+  <!-- HERO -->
+  <section id="home">
+    <div class="hero-glow"></div>
+    <div class="hero-glow-2"></div>
+    <div class="hero-inner">
+      <div>
+        <div class="hero-tag fade-up">Available for Opportunities</div>
+        <h1 class="hero-heading">
+          <div class="fade-up delay-1">Hello, I'm</div>
+          <div class="line2 fade-up delay-2">Sandeep</div>
+          <div class="line3 fade-up delay-3">Kumar Reddy</div>
+        </h1>
+        <p class="hero-sub fade-up delay-3">
+          B.Tech CS student at SRM University AP with a passion for building things —  
+          from data-driven systems to AI-powered tools. Currently exploring  
+          web development, ML, and whatever breaks next.
+        </p>
+        <div class="hero-btns fade-up delay-4">
+          <a class="btn-primary" href="#projects">View My Work</a>
+          <a class="btn-ghost" href="https://github.com/Sandeep-reddy-2811" target="_blank">GitHub Profile</a>
+        </div>
+        <div class="hero-stats fade-up delay-4">
+          <div class="stat-item">
+            <div class="stat-num">8.3</div>
+            <div class="stat-label">Current CGPA</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">95%</div>
+            <div class="stat-label">Class XII Score</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">2nd</div>
+            <div class="stat-label">Year @ SRM AP</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-avatar fade-up delay-2">
+        <div class="avatar-blob">
+          <div class="avatar-initials">SK</div>
+        </div>
+        <div class="avatar-ring"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="section-tag">Who I Am</div>
+      <h2 class="section-title">A developer in progress,<br>building with purpose.</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            I'm <span>K. Sandeep Kumar Reddy</span>, a 2nd-year Computer Science student at 
+            SRM University AP. I got into CS because I like breaking problems into pieces  
+            and writing code to reassemble them.
+          </p>
+          <p>
+            Right now I'm deep into <span>data structures, ML fundamentals, and full-stack web dev</span>.  
+            I'm especially drawn to the intersection of AI and practical tools — building stuff  
+            that actually solves a problem rather than just existing.
+          </p>
+          <p>
+            Outside the terminal I'm a <span>cricket and chess player</span> — both teach you  
+            to think a few moves ahead, which turns out to be useful in debugging too.
+          </p>
+        </div>
+        <div>
+          <div class="edu-list">
+            <div class="edu-card">
+              <div class="edu-degree">B.Tech – Computer Science Engineering</div>
+              <div class="edu-school">SRM University AP, Amaravati</div>
+              <div class="edu-year">2024 – Present · CGPA 8.3 / 10</div>
+            </div>
+            <div class="edu-card">
+              <div class="edu-degree">Intermediate – Class XII</div>
+              <div class="edu-school">Sri Sudha Junior College, Dhone</div>
+              <div class="edu-year">2022 – 2024 · 95%</div>
+            </div>
+            <div class="edu-card">
+              <div class="edu-degree">High School – Class X</div>
+              <div class="edu-school">ZP High School, Dhone</div>
+              <div class="edu-year">2021 – 2022 · 83%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-inner">
+      <div class="section-tag">What I Work With</div>
+      <h2 class="section-title">Skills & Tools</h2>
+      <div class="skills-grid">
+        <div class="skill-chip">
+          <div class="skill-icon">⚙️</div>
+          <div class="skill-name">C / C++</div>
+        </div>
+        <div class="skill-chip">
+          <div class="skill-icon">🐍</div>
+          <div class="skill-name">Python</div>
+        </div>
+        <div class="skill-chip">
+          <div class="skill-icon">🌐</div>
+          <div class="skill-name">HTML & CSS</div>
+        </div>
+        <div class="skill-chip">
+          <div class="skill-icon">📊</div>
+          <div class="skill-name">MS Excel</div>
+        </div>
+        <div class="skill-chip">
+          <div class="skill-icon">🔀</div>
+          <div class="skill-name">Git</div>
+        </div>
+        <div class="skill-chip">
+          <div class="skill-icon">🤖</div>
+          <div class="skill-name">AI / ML</div>
+        </div>
+        <div class="skill-chip">
+          <div class="skill-icon">🗄️</div>
+          <div class="skill-name">Databases</div>
+        </div>
+        <div class="skill-chip">
+          <div class="skill-icon">🧩</div>
+          <div class="skill-name">Problem Solving</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-inner">
+      <div class="section-tag">What I've Built</div>
+      <h2 class="section-title">Projects</h2>
+      <div class="projects-grid">
+
+        <!-- Featured -->
+        <div class="project-card featured">
+          <div class="project-card-glow"></div>
+          <div class="project-tag">Featured · C++</div>
+          <div class="project-title">Cricket Match Scorecard System</div>
+          <p class="project-desc">
+            An object-oriented C++ application that models a full cricket match end-to-end —  
+            players, teams, innings, over-by-over progression, and real-time score tracking.  
+            Built with clean class separation and OOP principles: encapsulation, inheritance,  
+            and modular design. My first serious attempt at designing a system from scratch.
+          </p>
+          <a class="project-link" href="https://github.com/Sandeep-reddy-2811/project" target="_blank">View on GitHub</a>
+        </div>
+
+        <!-- Coming soon cards -->
+        <div class="project-card soon">
+          <div class="soon-icon">🚧</div>
+          <div class="project-title" style="color: var(--muted); font-size: 0.9rem;">More Projects Coming</div>
+          <p class="soon-text">Currently cooking something in Web Dev & ML</p>
+        </div>
+
+        <div class="project-card soon">
+          <div class="soon-icon">⚡</div>
+          <div class="project-title" style="color: var(--muted); font-size: 0.9rem;">Open to Collaboration</div>
+          <p class="soon-text">Got an idea? Let's build something together.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-inner">
+      <div class="contact-inner">
+        <div>
+          <div class="section-tag">Get In Touch</div>
+          <h2 class="contact-heading">
+            Let's build<br><span>something</span><br>together.
+          </h2>
+          <p class="contact-sub">
+            Whether you have a project, an opportunity, or just want to talk code —  
+            I'm always open to connecting with people who are building cool things.
+          </p>
+        </div>
+        <div class="contact-links">
+          <a class="contact-row" href="mailto:ksandeepkumarreddy963@email.com">
+            <div class="contact-row-icon">✉️</div>
+            <div>
+              <div class="contact-row-label">Email</div>
+              <div class="contact-row-value">ksandeepkumarreddy963@email.com</div>
+            </div>
+          </a>
+          <a class="contact-row" href="tel:+918333974440">
+            <div class="contact-row-icon">📱</div>
+            <div>
+              <div class="contact-row-label">Phone</div>
+              <div class="contact-row-value">+91 83339 74440</div>
+            </div>
+          </a>
+          <a class="contact-row" href="https://github.com/Sandeep-reddy-2811" target="_blank">
+            <div class="contact-row-icon">🐙</div>
+            <div>
+              <div class="contact-row-label">GitHub</div>
+              <div class="contact-row-value">Sandeep-reddy-2811</div>
+            </div>
+          </a>
+          <a class="contact-row" href="https://www.linkedin.com/in/k-sandeep-kumar-reddy-800a1033a" target="_blank">
+            <div class="contact-row-icon">💼</div>
+            <div>
+              <div class="contact-row-label">LinkedIn</div>
+              <div class="contact-row-value">k-sandeep-kumar-reddy</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">SKR.</div>
+    <div class="footer-text">© 2025 K. Sandeep Kumar Reddy · Built with intention.</div>
+    <div class="footer-text">Dhone, Andhra Pradesh, India</div>
+  </footer>
+
+</body>
+</html>
